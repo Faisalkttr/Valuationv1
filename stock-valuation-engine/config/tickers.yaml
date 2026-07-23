@@ -1,0 +1,67 @@
+# Watchlist for the valuation engine.
+# One entry per ticker in Yahoo Finance format
+# (NSE stocks need the ".NS" suffix, e.g. CGPOWER.NS; US stocks are bare, e.g. AAPL).
+#
+# Edit this list freely -- the engine and dashboard both read from here,
+# so you don't need to touch any code to add or remove a name.
+
+tickers:
+  - CGPOWER.NS
+  - RELIANCE.NS
+  - TCS.NS
+  - INFY.NS
+  - HDFCBANK.NS
+  - ICICIBANK.NS
+  - LT.NS
+  - BAJFINANCE.NS
+  - MARUTI.NS
+  - TITAN.NS
+  - SUNPHARMA.NS
+  - ASIANPAINT.NS
+  - ULTRACEMCO.NS
+  - AXISBANK.NS
+  - KOTAKBANK.NS
+  - NESTLEIND.NS
+  - HINDUNILVR.NS
+  - ADANIENT.NS
+  - TATAMOTORS.NS
+  - TATASTEEL.NS
+  - JSWSTEEL.NS
+  - POWERGRID.NS
+  - NTPC.NS
+  - ONGC.NS
+  - COALINDIA.NS
+  - BHARTIARTL.NS
+  - WIPRO.NS
+  - HCLTECH.NS
+  - TECHM.NS
+  - DIVISLAB.NS
+  - DRREDDY.NS
+  - CIPLA.NS
+  - BRITANNIA.NS
+  - DABUR.NS
+  - GODREJCP.NS
+  - PIDILITIND.NS
+  - HAVELLS.NS
+  - SIEMENS.NS
+  - ABB.NS
+  - BEL.NS
+  - HAL.NS
+  - BOSCHLTD.NS
+  - EICHERMOT.NS
+  - HEROMOTOCO.NS
+  - BAJAJ-AUTO.NS
+  - INDUSINDBK.NS
+  - SBIN.NS
+  - PNB.NS
+  - BANKBARODA.NS
+  - IRCTC.NS
+  - ZOMATO.NS
+
+# How many years of quarterly history to use when building the
+# historical P/S distribution (median, 75th, 90th percentile).
+history_years: 5
+
+# How many trading days of tolerance around a quarter-end when
+# looking up the historical share price (handles holidays/weekends).
+price_lookup_tolerance_days: 5
