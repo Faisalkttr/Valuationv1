@@ -32,7 +32,7 @@ sections:
         tickers:
           - TPL          # Texas Pacific Land Corp
           - ADPORTS.AD   # Abu Dhabi Ports Group -- verify (ADX listing)
-          - ICTSY        # International Container Terminal Services ADR -- verify (grid showed "ICTEY")
+          - ICTEY        # International Container Terminal Services ADR -- verify (grid showed "ICTEY")
           - CNI          # Canadian National Railway
           - CP           # Canadian Pacific Kansas City
           - UNP          # Union Pacific
@@ -44,8 +44,8 @@ sections:
           nuclear energy for data centers, water tech, and environmental waste.
         tickers:
           - LIN          # Linde plc
-          - ABBN.SW      # ABB Ltd, Swiss listing
-          - SU.PA        # Schneider Electric, Paris listing
+          - ABBNY      # ABB Ltd, Swiss listing
+          - SBGSY        # Schneider Electric, Paris listing
           - GEV          # GE Vernova
           - ETN          # Eaton Corp
           - NVT          # nVent Electric
@@ -158,7 +158,7 @@ sections:
         tickers:
           - ABB.NS             # ABB India
           - SIEMENS.NS         # Siemens India
-          - HITACHIENR.NS      # Hitachi Energy India -- verify
+          - POWERINDIA.NS      # Hitachi Energy India -- verify
           - CGPOWER.NS         # CG Power and Industrial Solutions
           - PIIND.NS           # PI Industries
           - SUNPHARMA.NS       # Sun Pharmaceutical
@@ -181,13 +181,13 @@ sections:
           Resource-rich emerging markets (Brazil/Indonesia), proxy ETFs,
           and dominant international infrastructure/telecom operators.
         tickers:
-          - HIJP               # Japan proxy -- verify exact vehicle/ticker
+          - HIJP.L               # Japan proxy -- verify exact vehicle/ticker
           - TLK                # Telkom Indonesia ADR
           - INDO               # Indonesia proxy -- verify exact vehicle/ticker
           - VALE               # Vale SA ADR (Brazil)
-          - CEO                # CNOOC Ltd ADR (China)
+          - 0883.HK                # CNOOC Ltd ADR (China)
           - CSUAY              # China Shenhua Energy ADR
-          - CHL                # China Mobile ADR
+          - 0941.HK                # China Mobile ADR
           - ISDE.L             # iShares MSCI Indonesia UCITS ETF, LSE listing -- verify
 
   - name: "Business & Futuristic Overlay"
