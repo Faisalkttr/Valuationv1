@@ -1,0 +1,209 @@
+# Watchlist config, structured to match the allocation grid:
+#   Section (target % of portfolio)
+#     -> Layer / Category (weight within the section)
+#          -> tickers, in Yahoo Finance format, with the original thesis kept as a comment
+#
+# NOTES / THINGS TO VERIFY before running the engine:
+#   - Some symbols from the grid are ambiguous or exchange-listed and were mapped to a
+#     best-guess Yahoo Finance ticker (marked "# verify" below). yfinance will simply fail
+#     that single ticker (and get skipped, not crash the run) if a symbol is wrong --
+#     check the Actions log or run `python -m engine.run` locally and fix any misses.
+#   - "FTNT/CHKP" and "CRWD/ZS" in the source grid were an either/or choice --
+#     both options are listed; delete whichever you don't want.
+#   - Section target percentages in the source image summed to 55% (14+18+10+7+6),
+#     so there are likely additional sections beyond what was visible/cropped.
+#     Add them the same way once you have that part of the grid.
+#   - "XOM (Light Only)" and "Copper"/"Steel" annotations were kept as inline comments
+#     since they're position-sizing notes, not part of the ticker symbol.
+
+history_years: 5
+price_lookup_tolerance_days: 5
+
+sections:
+
+  - name: INFRA
+    target_pct: 0.14
+    layers:
+      - name: "Layer 1: Hard Assets"
+        weight: 0.40
+        thesis: >
+          Landowners, royalty engines, maritime ports, and Class I
+          transcontinental freight rail networks.
+        tickers:
+          - TPL          # Texas Pacific Land Corp
+          - ADPORTS.AD   # Abu Dhabi Ports Group -- verify (ADX listing)
+          - ICTSY        # International Container Terminal Services ADR -- verify (grid showed "ICTEY")
+          - CNI          # Canadian National Railway
+          - CP           # Canadian Pacific Kansas City
+          - UNP          # Union Pacific
+
+      - name: "Layer 2: Grid & Utilities"
+        weight: 0.40
+        thesis: >
+          Industrial gases, power electrification, grid equipment, clean
+          nuclear energy for data centers, water tech, and environmental waste.
+        tickers:
+          - LIN          # Linde plc
+          - ABBN.SW      # ABB Ltd, Swiss listing
+          - SU.PA        # Schneider Electric, Paris listing
+          - GEV          # GE Vernova
+          - ETN          # Eaton Corp
+          - NVT          # nVent Electric
+          - CEG          # Constellation Energy
+          - PWR          # Quanta Services
+          - CWCO         # Consolidated Water Co
+          - XYL          # Xylem Inc
+          - ECL          # Ecolab
+          - WM           # Waste Management
+          - RSG          # Republic Services
+
+      - name: "Layer 3: Tech-Adjacent"
+        weight: 0.20
+        thesis: >
+          Data center liquid cooling, fuel cells, networking switches, and
+          zero-trust/perimeter cloud cybersecurity infrastructure.
+        tickers:
+          - VRT          # Vertiv Holdings
+          - BE           # Bloom Energy
+          - ANET         # Arista Networks
+          - FTNT         # Fortinet -- either/or with CHKP, see note above
+          # - CHKP       # Check Point Software (alternative to FTNT)
+          - CRWD         # CrowdStrike -- either/or with ZS, see note above
+          # - ZS         # Zscaler (alternative to CRWD)
+
+  - name: "ENERGY & COMMODITY"
+    target_pct: 0.18
+    layers:
+      - name: "Layer 1: Monetary Royalties"
+        weight: 0.40
+        thesis: >
+          Precious metals streaming and asset-light gold/silver royalty engines.
+        tickers:
+          - FNV          # Franco-Nevada
+          - WPM          # Wheaton Precious Metals
+
+      - name: "Layer 2: Baseload Energy"
+        weight: 0.40
+        thesis: >
+          Uranium pure-plays for nuclear baseload, oil sands, natural gas,
+          and integrated global supermajors.
+        tickers:
+          - CCJ          # Cameco Corp
+          - CNQ          # Canadian Natural Resources
+          - XOM          # ExxonMobil (Light Only -- smaller position size)
+          - SU           # Suncor Energy
+          - EQT          # EQT Corp
+          - CVX          # Chevron
+
+      - name: "Layer 3: Industrial Materials"
+        weight: 0.20
+        thesis: >
+          Copper/iron mining for global electrification, efficient steel
+          production, and heavy construction/machinery standard equipment.
+        tickers:
+          - FCX          # Freeport-McMoRan (Copper)
+          - SCCO         # Southern Copper (Copper)
+          - BHP          # BHP Group
+          - NEM          # Newmont Corp
+          - COP          # ConocoPhillips
+          - NUE          # Nucor Corp (Steel)
+          - PH           # Parker Hannifin
+          - CAT          # Caterpillar
+
+  - name: "AI / SEMIS"
+    target_pct: 0.10
+    layers:
+      - name: "Layer 1: Physical Monopolies"
+        weight: 0.60
+        thesis: >
+          Structural monopolies in advanced foundries, EUV lithography
+          systems, silicon wafers, and EUV mask inspection equipment.
+        tickers:
+          - TSM          # Taiwan Semiconductor ADR
+          - ASML         # ASML Holding
+          - SHECY        # Shin-Etsu Chemical ADR
+          - 6920.T       # Lasertec, Tokyo listing
+
+      - name: "Layer 2: Architecture & Robotics"
+        weight: 0.30
+        thesis: >
+          Custom AI ASICs, electronic design automation (EDA) software,
+          edge AI silicon, and industrial factory robotics/automation.
+        tickers:
+          - AVGO         # Broadcom
+          - CDNS         # Cadence Design Systems
+          - QCOM         # Qualcomm
+          - FANUY        # Fanuc ADR
+          - 8035.T       # Tokyo Electron, Tokyo listing
+          - SNPS         # Synopsys
+
+      - name: "Layer 3: Velocity Applications"
+        weight: 0.10
+        thesis: >
+          Enterprise generative AI workflow automation, platform
+          cybersecurity, and high-capacity mass cloud storage.
+        tickers:
+          - NOW          # ServiceNow
+          - PANW         # Palo Alto Networks
+          - STX          # Seagate Technology
+
+  - name: EM
+    target_pct: 0.07
+    layers:
+      - name: "Layer 1: INDIA"
+        weight: 0.40
+        thesis: >
+          Indian grid modernization, power transmission, agrochemicals,
+          pharmaceuticals, and enterprise IT services.
+        tickers:
+          - ABB.NS             # ABB India
+          - SIEMENS.NS         # Siemens India
+          - HITACHIENR.NS      # Hitachi Energy India -- verify
+          - CGPOWER.NS         # CG Power and Industrial Solutions
+          - PIIND.NS           # PI Industries
+          - SUNPHARMA.NS       # Sun Pharmaceutical
+          - HCLTECH.NS         # HCL Technologies
+
+      - name: "Layer 2: GCC"
+        weight: 0.40
+        thesis: >
+          Highly cash-generative regional energy, natural gas processing,
+          water desalination, and telecom/digital infrastructure.
+        tickers:
+          - 2222.SR            # Saudi Aramco, Tadawul listing -- verify
+          - ADNOCGAS.AD        # ADNOC Gas, ADX listing -- verify (grid showed "ADCONGAS")
+          - 2082.SR            # ACWA Power, Tadawul listing -- verify
+          - 7010.SR            # Saudi Telecom Co (STC), Tadawul listing -- verify
+
+      - name: "Layer 3: Other Jurisdiction"
+        weight: 0.20
+        thesis: >
+          Resource-rich emerging markets (Brazil/Indonesia), proxy ETFs,
+          and dominant international infrastructure/telecom operators.
+        tickers:
+          - HIJP               # Japan proxy -- verify exact vehicle/ticker
+          - TLK                # Telkom Indonesia ADR
+          - INDO               # Indonesia proxy -- verify exact vehicle/ticker
+          - VALE               # Vale SA ADR (Brazil)
+          - CEO                # CNOOC Ltd ADR (China)
+          - CSUAY              # China Shenhua Energy ADR
+          - CHL                # China Mobile ADR
+          - ISDE.L             # iShares MSCI Indonesia UCITS ETF, LSE listing -- verify
+
+  - name: "Business & Futuristic Overlay"
+    target_pct: 0.06
+    layers:
+      - name: "Health, Biotech & Longevity"
+        weight: 1.00   # source grid gives per-ticker weights directly (30/25/25/20), not a sub-layer split
+        thesis: >
+          Metabolic healthcare, oncology and rare disease therapeutics,
+          robotic-assisted surgery, and life-sciences tools/reagents.
+        tickers:
+          - ticker: NVO
+            weight: 0.30   # Novo Nordisk -- GLP-1/obesity/diabetes
+          - ticker: AZN
+            weight: 0.25   # AstraZeneca -- oncology, rare disease
+          - ticker: ISRG
+            weight: 0.25   # Intuitive Surgical -- da Vinci robotic surgery
+          - ticker: TMO
+            weight: 0.20   # Thermo Fisher Scientific -- life sciences tools/reagents
